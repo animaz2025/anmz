@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gumball</title>
+    <link rel="stylesheet" href="style.css">
+     <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #e0e0e0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1f1f1f;
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #f39c12;
+            color: #000;
+        }
+
+        /* Content Section */
+        .main-content {
+            text-align: center;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 32px;
+            color: #f39c12;
+        }
+
+        .main-content p {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            background-color: #f39c12;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1f1f1f;
+            color: #fff;
+            font-size: 14px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1024px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content h1 {
+                font-size: 24px;
+            }
+
+            .main-content p {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Menyu</a></li>
+                <li><a href="iletisim.html">Əlaqə</a></li>
+                <li><a href="hakkimizda.html">Haqqımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Gumball</h1>
+        <p>Sezonu seçin:</p>
+
+        <button onclick="window.location.href='gumballs1.html'">Sezon 1</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Animaz. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+</body>
+</html>
