@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaz - İstek Formu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       /* Genel stil */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header sabitleme */
+header {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #333;
+}
+
+/* Ana içerik */
+.container {
+    max-width: 600px;
+    margin: 120px auto 20px auto; /* Header'a giren formu aşağıya almak için margin-top'u artırdık */
+    padding: 25px;
+    background-color: #3b3b3b;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Form elemanları */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+/* Textarea'ya karakter sınırı */
+#message {
+    resize: vertical;
+    max-height: 200px;
+}
+
+/* Gönder butonu */
+.submit-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #f39c12;
+}
+
+/* Gönderildi mesajı */
+#response-message {
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+    display: none;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #1f1f1f;
+    color: rgb(255, 255, 255);
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .container {
+        margin: 90px auto; /* Mobilde daha küçük bir margin-top */
+        padding: 20px;
+    }
+
+    header {
+        padding: 8px 0; /* Mobilde header'ın yüksekliğini biraz daha küçük tutabiliriz */
+    }
+
+    footer {
+        padding: 8px 0; /* Mobilde footer'ın yüksekliğini de küçültüyoruz */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Menyu</a></li>
+            <li><a href="iletisim.html">Əlaqə</a></li>
+            <li><a href="hakkimizda.html">Haqqımızda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <form id="request-form">
+        <div class="input-group">
+            <label for="name">Adınız:</label>
+            <input type="text" id="name" name="name" placeholder="Adınızı yazın" required>
+        </div>
+
+        <div class="input-group">
+            <label for="message">İstək Mesajı:</label>
+            <textarea id="message" name="message" placeholder="Saytda şikayətçi olduğunuz və ya təvsiyə vermək istədiyiniz ya da gəlməsini istədiyiniz anime və ya cizgi film varsa yazın." maxlength="3000" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Göndər</button>
+    </form>
+
+    <div id="response-message">
+        <p>İstəyiniz uğurla göndərildi!</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Animaz | Bütün Hüquqlar Qorunur.</p>
+</footer>
+
+<script>
+    const form = document.getElementById('request-form');
+const responseMessage = document.getElementById('response-message');
+
+// Discord Webhook URL'nizi buraya yapıştırın
+const webhookUrl = 'https://discord.com/api/webhooks/1345757167881289800/dPtDxl483gtZ9bSFSpzk9UVJdWFDxSXv5sL04XKg9tqybTLvW3FiZlP4QMFIbnPBbnf4';
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Kullanıcı daha önce form gönderdi mi kontrol et
+    const lastRequestTime = localStorage.getItem('lastRequestTime');
+    const currentTime = new Date().getTime();
+
+    if (lastRequestTime && currentTime - lastRequestTime < 30 * 60 * 1000) { // 30 dakika = 30 * 60 * 1000 milisaniye
+        alert('Növbəti İstək Üçün 30 dəqiqə gözləməlisiniz!');
+        return; // 30 dakikadan önce istek gönderilmesini engelle
+    }
+
+    // Form verilerini al
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+    const timestamp = new Date().toLocaleString();
+
+    // Webhook verisi
+    const requestData = {
+        content: `Yeni Anime İstəyi: \n\n**Adı**: ${name} \n**Mesaj**: ${message} \n**Göndərilmə Tarixi**: ${timestamp}`,
+    };
+
+    // Mesaj gönderildiğini hemen göster
+    responseMessage.style.display = 'block';
+
+    // 3 saniye sonra mesajı gizle
+    setTimeout(() => {
+        responseMessage.style.display = 'none';
+    }, 3000);
+
+    // Formu sıfırla
+    form.reset();
+
+    // Webhook'a veri gönder
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+    })
+    .catch(error => {
+        console.error('Hata:', error);
+    });
+
+    // Form gönderildikten sonra, geçerli zaman bilgisini localStorage'a kaydet
+    localStorage.setItem('lastRequestTime', currentTime);
+});
+</script>
