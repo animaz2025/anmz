@@ -151,57 +151,67 @@ footer {
 
 <script>
     const form = document.getElementById('request-form');
-const responseMessage = document.getElementById('response-message');
+    const responseMessage = document.getElementById('response-message');
 
-// Discord Webhook URL'nizi buraya yapıştırın
-const webhookUrl = 'https://discord.com/api/webhooks/1345757167881289800/dPtDxl483gtZ9bSFSpzk9UVJdWFDxSXv5sL04XKg9tqybTLvW3FiZlP4QMFIbnPBbnf4';
+    // Discord Webhook URL'nizi buraya yapıştırın
+    const webhookUrl = 'https://discord.com/api/webhooks/1345757167881289800/dPtDxl483gtZ9bSFSpzk9UVJdWFDxSXv5sL04XKg9tqybTLvW3FiZlP4QMFIbnPBbnf4';
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Kullanıcı daha önce form gönderdi mi kontrol et
-    const lastRequestTime = localStorage.getItem('lastRequestTime');
-    const currentTime = new Date().getTime();
+        // Kullanıcı daha önce form gönderdi mi kontrol et
+        const lastRequestTime = localStorage.getItem('lastRequestTime');
+        const currentTime = new Date().getTime();
 
-    if (lastRequestTime && currentTime - lastRequestTime < 30 * 60 * 1000) { // 30 dakika = 30 * 60 * 1000 milisaniye
-        alert('Növbəti İstək Üçün 30 dəqiqə gözləməlisiniz!');
-        return; // 30 dakikadan önce istek gönderilmesini engelle
-    }
+        if (lastRequestTime && currentTime - lastRequestTime < 30 * 60 * 1000) { // 30 dakika
+            alert('Növbəti İstək Üçün 30 dəqiqə gözləməlisiniz!');
+            return;
+        }
 
-    // Form verilerini al
-    const name = document.getElementById('name').value;
-    const message = document.getElementById('message').value;
-    const timestamp = new Date().toLocaleString();
+        // Form verilerini al
+        const name = document.getElementById('name').value;
+        const message = document.getElementById('message').value;
+        const timestamp = new Date().toLocaleString();
 
-    // Webhook verisi
-    const requestData = {
-        content: `Yeni Anime İstəyi: \n\n**Adı**: ${name} \n**Mesaj**: ${message} \n**Göndərilmə Tarixi**: ${timestamp}`,
-    };
+        // Kullanıcının IP adresini almak için API çağrısı yap
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const userIP = data.ip;
 
-    // Mesaj gönderildiğini hemen göster
-    responseMessage.style.display = 'block';
+                // Webhook verisi
+                const requestData = {
+                    content: `Yeni Anime İstəyi: \n\n**Adı**: ${name} \n**Mesaj**: ${message} \n**Göndərilmə Tarixi**: ${timestamp} \n**IP Adresi**: ${userIP}`,
+                };
 
-    // 3 saniye sonra mesajı gizle
-    setTimeout(() => {
-        responseMessage.style.display = 'none';
-    }, 3000);
+                // Mesaj gönderildiğini hemen göster
+                responseMessage.style.display = 'block';
 
-    // Formu sıfırla
-    form.reset();
+                // 3 saniye sonra mesajı gizle
+                setTimeout(() => {
+                    responseMessage.style.display = 'none';
+                }, 3000);
 
-    // Webhook'a veri gönder
-    fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData),
-    })
-    .catch(error => {
-        console.error('Hata:', error);
+                // Formu sıfırla
+                form.reset();
+
+                // Webhook'a veri gönder
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData),
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                });
+
+                // Form gönderildikten sonra zamanı kaydet
+                localStorage.setItem('lastRequestTime', currentTime);
+            })
+            .catch(error => {
+                console.error('IP adresi alınamadı:', error);
+            });
     });
-
-    // Form gönderildikten sonra, geçerli zaman bilgisini localStorage'a kaydet
-    localStorage.setItem('lastRequestTime', currentTime);
-});
 </script>
