@@ -22,19 +22,34 @@
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 4vw;
             text-align: center;
             color: white;
             text-shadow: 3px 3px 10px rgba(255, 0, 0, 0.8);
             position: absolute;
             top: 40%;
+            width: 90%;
         }
 
         .flower {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 1.5vw;
+            height: 1.5vw;
+            opacity: 0.7;
             pointer-events: none;
+            transform-origin: center;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 6vw;
+                top: 35%;
+            }
+
+            .flower {
+                width: 3vw;
+                height: 3vw;
+            }
         }
     </style>
 </head>
@@ -52,14 +67,17 @@
             flower.style.left = `${startX}px`;
             flower.style.top = `-50px`;
 
-            let speed = Math.random() * 3 + 2;
-            let angle = Math.random() * 10 - 5;
-            
+            let speed = Math.random() * 2 + 1;
+            let angle = Math.random() * 4 - 2;
+            let rotation = Math.random() * 360;
+
             function fall() {
                 let top = parseFloat(flower.style.top);
                 let left = parseFloat(flower.style.left);
                 flower.style.top = `${top + speed}px`;
                 flower.style.left = `${left + angle}px`;
+                flower.style.transform = `rotate(${rotation}deg)`;
+                rotation += 2;
 
                 if (top < window.innerHeight) {
                     requestAnimationFrame(fall);
@@ -70,7 +88,7 @@
             fall();
         }
 
-        setInterval(createFlower, 300);
+        setInterval(createFlower, 500);
     </script>
 </body>
 </html>
