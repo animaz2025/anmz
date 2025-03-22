@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://animaz.netlify.app/sitemap.xml

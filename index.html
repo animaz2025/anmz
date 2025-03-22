@@ -2,93 +2,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayt üzərində profilaktik işlər gedir</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-        }
-
-        body {
-            background: url('https://static.vecteezy.com/system/resources/thumbnails/013/035/924/original/retro-sci-fi-background-futuristic-grid-landscape-of-the-80s-digital-cyber-surface-suitable-for-design-in-the-style-of-the-1980s-free-video.jpg') no-repeat center center fixed;
-            background-size: cover;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h1 {
-            font-size: 4vw;
-            text-align: center;
-            color: white;
-            text-shadow: 3px 3px 10px rgba(255, 0, 0, 0.8);
-            position: absolute;
-            top: 40%;
-            width: 90%;
-        }
-
-        .flower {
-            position: absolute;
-            width: 1.5vw;
-            height: 1.5vw;
-            opacity: 0.7;
-            pointer-events: none;
-            transform-origin: center;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 6vw;
-                top: 35%;
-            }
-
-            .flower {
-                width: 3vw;
-                height: 3vw;
-            }
-        }
-    </style>
+    <meta name="keywords" content="anime, cizgi film, azəricə, azərbaycanca anime, azərbaycanca cizgi film, animaz">
+    <meta name="author" content="GumballGardas">
+    <meta property="og:title" content="Animaz - Cizgi Film və Anime İzlə">
+    <meta property="og:description" content="Azərbaycanca Anime və Cizgi Film İzlə">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="https://animaz.netlify.app/">
+    <title>Animaz - Cizgi Film və Anime İzlə</title>
+    <link rel="stylesheet" href="vacib/style.css">
+    <link rel="icon" type="image/jpg" href="https://i.hizliresim.com/gtuw87n.png">
+ <div class="logo-container">
+        
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KFN6P6T1W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8KFN6P6T1W');
+</script>
 <body>
-    <h1>Sayt üzərində profilaktik işlər gedir.<br>Yaxın zamanda sayt yenidən açılacaq.</h1>
 
-    <script>
-        function createFlower() {
-            const flower = document.createElement("img");
-            flower.src = "gul.png";
-            flower.className = "flower";
-            document.body.appendChild(flower);
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Menyu</a></li>
+            <li><a href="hakkimizda.html">Haqqımızda</a></li>
+            <li><a href="iletisim.html">Əlaqə</a></li>
+            <li><a href="apkendir.html">APK-i Endirin</a></li>
+            <li><a href="istek.html">Tövsiyə-İstək</a></li>
+            <li>
+                <input type="text" id="search" placeholder="Filmi Adla Axtarın..." oninput="applyFilters()">
+<select id="categorySelect" onchange="applyFilters()">
 
-            const startX = Math.random() * window.innerWidth;
-            flower.style.left = `${startX}px`;
-            flower.style.top = `-50px`;
+                    <option value="">Kategori Seç</option>
+                    <option value="cizgi-film">Cizgi Film</option>
+                    <option value="anime">Anime Film</option>
+                    <option value="cs">Cizgi Serial</option>
+                    <option value="as">Anime Serial</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <img src="https://i.hizliresim.com/gz3sdgk.png" alt="animaz" class="logo">
+</header>
+<div class="reklam-banner-ust">
+  <a href="https://discord.gg/bQEzBaethR" target="_blank">
+    <img src="https://i.hizliresim.com/azu9gww.jpg" alt="Üst Reklam" />
+  </a>
+</div>
 
-            let speed = Math.random() * 2 + 1;
-            let angle = Math.random() * 4 - 2;
-            let rotation = Math.random() * 360;
+    <main>
+        <h1>Ən Sevilən Çizgi Filmləri</h1>
+        <div class="film-container">
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/toystory4.html">
+                    <img src="https://i.hizliresim.com/oqdm0g8.png" alt="Toy Story 4" loading="lazy">
+                    <p>Toy Story 4</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/minions1.html">
+                    <img src="https://i.hizliresim.com/m5vrtsk.png" alt="Minions(2015)" loading="lazy">
+                    <p>Minions(2015)</p>
+                </a>
+            </div>
+                 <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/minions2.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzhlYWI1ODMtMjFiMC00MTIxLWE4ODMtNjNjYWJiMjAzMWI0XkEyXkFqcGdeQXVyNDM1ODc2NzE@._V1_FMjpg_UX1000_.jpg" alt="Minions 2" loading="lazy">
+                    <p>Minions 2 The Rise of Gru</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/toystory3.html">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/48ccd0d7-a7a8-4724-a6ce-a5db2491eaa4/1920x" alt="Toy Story 3" loading="lazy">
+                    <p>Toy Story 3</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/toystory2.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMWM5ZDcxMTYtNTEyNS00MDRkLWI3YTItNThmMGExMWY4NDIwXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg" alt="Toy Story 2" loading="lazy">
+                    <p>Toy Story 2</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/toystory1.html">
+                    <img src="https://media.baamboozle.com/uploads/images/397384/1629673229_348645_url.jpeg" alt="Toy Story 1" loading="lazy">
+                    <p>Toy Story</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/bolt.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/ru/9/94/Bolt_Russian_poster.jpg" alt="Bolt(2008)" loading="lazy">
+                    <p>Bolt</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/madagascar1.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BN2I5YzFlYWEtZjRhNy00ZmQzLWJhNTktZGIwYjFjODdmNDgxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg" alt="Madagascar1" loading="lazy">
+                    <p>Madagascar 1</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/madagascar2.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjExMDA4NDcwMl5BMl5BanBnXkFtZTcwODAxNTQ3MQ@@._V1_FMjpg_UX1000_.jpg" alt="Madagascar2" loading="lazy">
+                    <p>Madagascar 2</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/madagascar3.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTM2MTIzNzk2MF5BMl5BanBnXkFtZTcwMDcwMzQxNw@@._V1_FMjpg_UX1000_.jpg" alt="Madagascar3" loading="lazy">
+                    <p>Madagascar 3</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/zootopia.html">
+                    <img src="https://i.hizliresim.com/autdi3i.png" alt="Zoopolis" loading="lazy">
+                    <p>Zootopia</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/legomarvelavangerscodered.html">
+                    <img src="https://img-s2.onedio.com/id-650dd5f6ca65146a67223d01/rev-0/w-1200/h-1500/f-jpg/s-886f31f9f8baf41e73ade78c31dab3af3070ef65.jpg" alt="lmacr" loading="lazy">
+                    <p>LEGO Marvel Avengers: Code Red</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/howtotrainyourdragon1.html">
+                    <img src="https://play-lh.googleusercontent.com/DkNofQmEbXZLZeYUsQ6RddhShuSBpThifBhK520oEGG4aPyBGQyuJq_8UYP77ZRlSKg" alt="httyd" loading="lazy">
+                    <p>How To Train Your Dragon</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/howtotrainyourdragon2.html">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/c3ee5c39-27d0-4fef-9dcb-4fd21a526aea/1920x" alt="httyd2" loading="lazy">
+                    <p>How To Train Your Dragon 2</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/howtotrainyourdragon3thw.html">
+                    <img src="https://tr.web.img2.acsta.net/pictures/18/10/26/12/06/5721651.jpg" alt="httyd3" loading="lazy">
+                    <p>How To Train Your Dragon 3 The Hidden World</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/howtotrainyourdragon4h.html">
+                    <img src="https://i.hizliresim.com/rxvjva8.png" alt="httyd4" loading="lazy">
+                    <p>How To Train Your Dragon 4 Homecoming</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/howtotrainyourdragon5.html">
+                    <img src="https://i.hizliresim.com/a0prrep.png" alt="httyd5" loading="lazy">
+                    <p>How To Train Your Dragon 2025</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/kungfupanda1.html">
+                    <img src="https://s1.afisha.ru/mediastorage/ae/c5/4042d34c22d4462f800d0196c5ae.jpg" alt="kfp" loading="lazy">
+                    <p>Kung Fu Panda</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/kungfupanda2.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYzQ0ZWIxZjAtYWI3Yy00MGM0LWFjOGYtNzcyYThiOTA3ODI1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg" alt="kfp2" loading="lazy">
+                    <p>Kung Fu Panda 2</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/kungfupanda3.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTUyNzgxNjg2M15BMl5BanBnXkFtZTgwMTY1NDI1NjE@._V1_FMjpg_UX1000_.jpg" alt="kfp3" loading="lazy">
+                    <p>Kung Fu Panda 3</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/kungfupanda4.html">
+                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/dae5b05e-778b-4474-a981-83526a3227df/1920x" alt="kfp4" loading="lazy">
+                    <p>Kung Fu Panda 4</p>
+                </a>
+            </div>
+            <div class="film" data-category="anime">
+                <a href="anime-filmler/spiritedaway.html">
+                    <img src="https://i.hizliresim.com/3uf6sc1.png" alt="spaw" loading="lazy">
+                    <p>Spirited Away</p>
+                </a>
+            </div>
+            <div class="film" data-category="anime">
+                <a href="anime-filmler/jujutsukaisen0.html">
+                    <img src="https://i.hizliresim.com/e3ntfi2.jpg" alt="spaw" loading="lazy">
+                    <p>Jujutsu Kaisen 0</p>
+                </a>
+            </div>
+            <div class="film" data-category="anime">
+                <a href="anime-filmler/theboyandthebeast.html">
+                    <img src="https://i.hizliresim.com/8psl7h3.png" alt="tbatb" loading="lazy">
+                    <p>The Boy And The Beast</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/thegooddinosaur.html">
+                    <img src="https://i.hizliresim.com/75ru30q.png" alt="tgd" loading="lazy">
+                    <p>The Good Dinosaur</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/brave.html">
+                    <img src="https://i.hizliresim.com/ml2jmwp.png" alt="b" loading="lazy">
+                    <p>Brave</p>
+                </a>
+            </div>
+            <div class="film" data-category="cizgi-film">
+                <a href="cizgi-filmler/carlsdate.html">
+                    <img src="https://i.hizliresim.com/8vov0bp.png" alt="cd" loading="lazy">
+                    <p>Carl's Date</p>
+                </a>
+            </div>
+            <div class="film" data-category="cs">
+                <a href="cizgi-seriallar/gumball/gumball.html">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNWY2YWU1NWEtZTk2Yi00Y2Q5LThlOTMtZWQzZTQ1OWM5MmM2XkEyXkFqcGdeQXVyNjQyMzg3MTE@._V1_FMjpg_UX1000_.jpg" alt="gumball" loading="lazy">
+                    <p>The Amazing World of Gumball</p>
+                </a>
+            </div>
+            <div class="film" data-category="anime">
+                <a href="anime-filmler/bcsotwk.html">
+                    <img src="https://i.hizliresim.com/qwt6zv5.jpg" alt="bc" loading="lazy">
+                    <p>Black Clover Sword Of The Wizard King</p>
+                </a>
+            </div>
+            <div class="film" data-category="anime">
+                <a href="anime-filmler/opfr.html">
+                    <img src="https://i.hizliresim.com/27x0szg.jpg" alt="bc" loading="lazy">
+                    <p>One Piece Film Red</p>
+                </a>
+            </div>
+            <div class="film" data-category="as">
+                <a href="anime-seriallar/Naruto Shippuden/ns.html">
+                    <img src="https://i.hizliresim.com/8tpz2lt.jpg" alt="bc" loading="lazy">
+                    <p>Naruto Shippuden</p>
+                </a>
+            </div>
+        </div>
+<div class="reklam-banner-alt">
+  <a href="https://animaz.netlify.app" target="_blank">
+    <img src="https://i.hizliresim.com/rq3b5my.jpeg" alt="Alt Reklam" />
+  </a>
+</div>
+<div id="preloader">
+    <div class="spinner"></div>
+</div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Animaz. Bütün hüquqlar qorunur.</p>
+    </footer>
 
-            function fall() {
-                let top = parseFloat(flower.style.top);
-                let left = parseFloat(flower.style.left);
-                flower.style.top = `${top + speed}px`;
-                flower.style.left = `${left + angle}px`;
-                flower.style.transform = `rotate(${rotation}deg)`;
-                rotation += 2;
-
-                if (top < window.innerHeight) {
-                    requestAnimationFrame(fall);
-                } else {
-                    flower.remove();
-                }
-            }
-            fall();
-        }
-
-        setInterval(createFlower, 500);
-    </script>
+<script src="vacib/script.js"></script>
 </body>
 </html>
