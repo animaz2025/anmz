@@ -24,7 +24,7 @@
   gtag('config', 'G-8KFN6P6T1W');
 </script>
 <body>
-
+<div id="loader"></div>
 <header>
     <nav>
         <ul>
@@ -256,6 +256,18 @@
     <footer>
         <p>&copy; 2025 Animaz. Bütün hüquqlar qorunur.</p>
     </footer>
+<script>
+    var preloader = document.getElementById('loader');
+    
+    function preLoaderHandler() {
+        preloader.classList.add('hidden'); // Opacity ile yavaşça kaybolur
+        setTimeout(() => {
+            preloader.style.display = 'none'; // 0.5 saniye sonra tamamen yok olur
+        }, 500);
+    }
+    
+    setTimeout(preLoaderHandler, 1500); // 3 saniye sonra kaybolsun
+</script>
 
 <script src="vacib/script.js"></script>
 </body>
