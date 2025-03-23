@@ -5,3 +5,22 @@ window.addEventListener("load", function() {
     document.getElementById("preloader").classList.add("hidden");
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Preloader'ı oluştur
+    let preloader = document.createElement("div");
+    preloader.id = "preloader";
+    preloader.innerHTML = `
+        <div class="spinner"></div>
+    `;
+    document.body.appendChild(preloader);
+
+    // En az 3 saniye beklet
+    setTimeout(() => {
+        window.onload = function () {
+            preloader.style.opacity = "0";
+            setTimeout(() => {
+                preloader.remove();
+            }, 500); // Geçiş efekti için 0.5s
+        };
+    }, 3000);
+});
